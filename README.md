@@ -1,6 +1,9 @@
 # Imagick svg bug
 Imagick throws exception when trying to load svg `$imagick->readImageBlob($svgContent);` on some distro/packages configurations. Some configuration works with 
-xml tag hack.
+xml tag hack. It seems the content of the svg does not matter, bug reproduced event in simplified version like this:
+```
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 666 348" width="666" height="348"><circle r="1.5" cx="333" cy="175.60000610351562" fill="black"></circle></svg>
+```
 
 # Xml tag hack
 Prepending `<?xml version="1.0" encoding="UTF-8" standalone="no"?>` to svg content in some configurations makes it work.
